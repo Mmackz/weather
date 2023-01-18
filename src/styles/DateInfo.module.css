@@ -1,0 +1,24 @@
+.time {
+   font-size: 3.25rem;
+   font-weight: 500;
+   line-height: 1.35;
+   color: #5c92fe;
+}
+
+.date {
+   font-weight: 700;
+   color: #45465f;
+   margin-bottom: 1rem;
+}
+
+.greeting {
+   display: flex;
+   align-items: center;
+   color: #5c92fe;
+}
+
+.greeting-text {
+   font-size: 1.8rem;
+   font-weight: 500;
+   margin-left: 0.35rem;
+}
