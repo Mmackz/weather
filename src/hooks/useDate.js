@@ -21,7 +21,7 @@ export const useDate = () => {
 
    const hour = today?.getHours();
    const greeting = `Good ${
-      (hour < 12 && "Morning") || (hour < 17 && "morning") || "Evening"
+      (hour < 12 && "morning") || (hour < 17 && "afternoon") || "evening"
    }!`;
 
    const time = today?.toLocaleTimeString(locale, {
