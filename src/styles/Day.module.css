@@ -1,0 +1,13 @@
+.container {
+   padding: 1.15rem 1.5rem;
+   width: fit-content;
+   border-radius: 1rem;
+   text-align: center;
+   background: white;
+   color: var(--dark-text);
+   font-weight: 700;
+}
+
+.container > p:nth-child(2) {
+   margin-top: 0.5rem;
+}
