@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { useDate } from "@/hooks";
 import styles from "@/styles/DateInfo.module.css";
 import Sun from "@/../public/images/sun";
