@@ -1,3 +1,11 @@
+:root {
+   --dark-text: #45465f;
+   --light-text: #ffffff;
+   --accent-text: #5c92fe;
+   --day-bg: hsla(220, 98%, 79%, 1);
+   --day-gradient: 135deg, hsla(220, 98%, 79%, 1) 0%, hsla(220, 99%, 70%, 1) 100%;
+}
+
 body {
    background: #f0f5ff;
 }
