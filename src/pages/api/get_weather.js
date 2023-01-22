@@ -44,17 +44,28 @@ function buildObject(data) {
          imperial: Math.round(weatherData.wind.speed * 2.23694)
       }
    };
+   
+   const currentDay = {
+      condition: currentWeather.condition,
+      temp: currentWeather.temp,
+      weekday: new Date().getDay(),
+      weekday_text: getWeekday(new Date().getDay())
+   };
 
-   const days = weatherData.list
-      .filter((item) => item.dt_txt.includes("15:00:00"))
+   console.log(weatherData.list)
+
+   const days = [currentDay, ...weatherData.list
+      .filter((item) => item.dt_txt.includes("18:00:00"))
       .map((item) => ({
          condition: item.weather[0].main,
          temp: {
             metric: Math.round(item.main.temp - 273.15),
             imperial: Math.round((item.main.temp - 273.15) * 1.8 + 32)
          },
-         weekday: getWeekday(new Date(item.dt * 1000).getDay())
-      }));
+         weekday: new Date(item.dt * 1000).getDay(),
+         weekday_text: getWeekday(new Date(item.dt * 1000).getDay())
+      }))];
+
    return {
       airQuality,
       coord: weatherData.coord,
@@ -74,18 +85,18 @@ async function getAirQualityData(coords) {
 function getWeekday(i) {
    switch (i) {
       case 0:
-         return "Mon";
-      case 1:
-         return "Tue";
-      case 2:
-         return "Wed";
-      case 3:
-         return "Thu";
-      case 4:
-         return "Fri";
-      case 5:
-         return "Sat";
-      case 6:
          return "Sun";
+      case 1:
+         return "Mon";
+      case 2:
+         return "Tue";
+      case 3:
+         return "Wed";
+      case 4:
+         return "Thu";
+      case 5:
+         return "Fri";
+      case 6:
+         return "Sat";
    }
 }
