@@ -1,0 +1,13 @@
+.container {
+   margin-top: 2rem;
+   display: flex;
+   gap: 1rem;
+}
+
+.container > div:first-child {
+   color: var(--light-text);
+   background: var(--day-bg);
+   background: linear-gradient(var(--day-gradient));
+   background: -moz-linear-gradient(var(--day-gradient));
+   background: -webkit-linear-gradient(var(--day-gradient));
+}
