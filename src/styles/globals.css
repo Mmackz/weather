@@ -6,6 +6,10 @@
    --day-gradient: 135deg, hsla(220, 98%, 79%, 1) 0%, hsla(220, 99%, 70%, 1) 100%;
 }
 
+html {
+   font-size: 18px;
+}
+
 body {
    background: #f0f5ff;
 }

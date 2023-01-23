@@ -1,13 +1,18 @@
 .container {
-   padding: 1.15rem 1.5rem;
+   padding: 0 0.5rem 1rem;
    width: fit-content;
    border-radius: 1rem;
    text-align: center;
    background: white;
    color: var(--dark-text);
-   font-weight: 700;
+   font-weight: 500;
+   font-size: 0.95rem;
 }
 
 .container > p:nth-child(2) {
-   margin-top: 0.5rem;
+   margin-top: -0.3rem;
+}
+
+.container img {
+   transform: scale(1.15);
 }
