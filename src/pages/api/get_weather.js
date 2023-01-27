@@ -44,27 +44,28 @@ function buildObject(data) {
          imperial: Math.round(weatherData.wind.speed * 2.23694)
       }
    };
-   
+
    const currentDay = {
       condition: currentWeather.condition,
       temp: currentWeather.temp,
-      weekday: new Date().getDay(),
-      weekday_text: getWeekday(new Date().getDay())
+      weekday: 7,
+      weekday_text: "Now"
    };
 
-   console.log(weatherData.list)
-
-   const days = [currentDay, ...weatherData.list
-      .filter((item) => item.dt_txt.includes("18:00:00"))
-      .map((item) => ({
-         condition: item.weather[0].main,
-         temp: {
-            metric: Math.round(item.main.temp - 273.15),
-            imperial: Math.round((item.main.temp - 273.15) * 1.8 + 32)
-         },
-         weekday: new Date(item.dt * 1000).getDay(),
-         weekday_text: getWeekday(new Date(item.dt * 1000).getDay())
-      }))];
+   const days = [
+      currentDay,
+      ...weatherData.list
+         .filter((item) => getLocalAfternoon(item.dt, weatherData.timezone))
+         .map((item) => ({
+            condition: item.weather[0].main,
+            temp: {
+               metric: Math.round(item.main.temp - 273.15),
+               imperial: Math.round((item.main.temp - 273.15) * 1.8 + 32)
+            },
+            weekday: new Date((item.dt + tz) * 1000).getUTCDay(),
+            weekday_text: getWeekday(new Date((item.dt + tz) * 1000).getUTCDay())
+         }))
+   ];
 
    return {
       airQuality,
@@ -80,6 +81,12 @@ async function getAirQualityData(coords) {
    );
    const airQualityData = await airQualityResult.json();
    return airQualityData;
+}
+
+function getLocalAfternoon(dt, tz) {
+   // returns true if timestamp is between 1-3 pm local time.
+   const hours = new Date((dt + tz) * 1000).getUTCHours();
+   return hours >= 13 && hours < 16;
 }
 
 function getWeekday(i) {
