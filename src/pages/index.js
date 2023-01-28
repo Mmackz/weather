@@ -28,7 +28,8 @@ export default function Home({ weatherData }) {
 export async function getServerSideProps({ req }) {
    /* Trying to get initial location */
    const forwarded = req.headers["x-forwarded-for"]
-   const ip = forwarded ? forwarded.split(/, /)[0] : req.connection.remoteAddress
+   const ip = forwarded ? forwarded.split(/, /)[0] : req.connection.remoteAddress;
+   getLocation(ip);
    
 
    const URL = process.env.NODE_ENV === "production" ? process.env.NEXT_PUBLIC_URL : "http://localhost:3000";
