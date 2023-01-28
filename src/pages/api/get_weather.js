@@ -1,8 +1,9 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
 export default async function handler(req, res) {
-   const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=vancouver&appid=${process.env.WEATHER_API_KEY}`;
-   const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=vancouver&appid=${process.env.WEATHER_API_KEY}`;
+   const { lat, lon } = req.query;
+   const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.WEATHER_API_KEY}`;
+   const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${process.env.WEATHER_API_KEY}`;
 
    const [res1, res2] = await Promise.all([fetch(weatherUrl), fetch(forecastUrl)]);
 

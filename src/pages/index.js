@@ -26,14 +26,22 @@ export default function Home({ weatherData }) {
 }
 
 export async function getServerSideProps({ req }) {
-   /* Trying to get initial location */
-   const forwarded = req.headers["x-forwarded-for"]
-   const ip = forwarded ? forwarded.split(/, /)[0] : req.connection.remoteAddress;
-   getLocation(ip);
-   
+   const isProd = process.env.NODE_ENV === "production";
+   let location;
 
-   const URL = process.env.NODE_ENV === "production" ? process.env.NEXT_PUBLIC_URL : "http://localhost:3000";
-   const response = await fetch(`${URL}/api/get_weather`);
+   if (isProd) {
+      /* Trying to get initial location */
+      const forwarded = req.headers["x-forwarded-for"];
+      const ip = forwarded ? forwarded.split(/, /)[0] : req.connection.remoteAddress;
+      location = await getLocation(ip);
+   } else {
+      location = await getLocation("8.8.8.8");
+   }
+
+   const { lat, lon } = location;
+
+   const URL = isProd ? process.env.NEXT_PUBLIC_URL : "http://localhost:3000";
+   const response = await fetch(`${URL}/api/get_weather?lat=${lat}&lon=${lon}`);
    const data = await response.json();
    return {
       props: {
@@ -44,5 +52,5 @@ export async function getServerSideProps({ req }) {
 
 async function getLocation(ip) {
    const data = await fetch(`https://ipapi.co/${ip}/json`).then((res) => res.json());
-   console.log(data);
+   return { lat: data.latitude, lon: data.longitude };
 }
