@@ -43,6 +43,6 @@ export async function getServerSideProps({ req }) {
 }
 
 async function getLocation(ip) {
-   const data = await fetch(`https://iapi.co/${ip}/json`).then((res) => res.json());
+   const data = await fetch(`https://ipapi.co/${ip}/json`).then((res) => res.json());
    console.log(data);
 }
