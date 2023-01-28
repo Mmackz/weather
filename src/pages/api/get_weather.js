@@ -52,10 +52,12 @@ function buildObject(data) {
       weekday_text: "Now"
    };
 
+   const tz = weatherData.timezone;
+
    const days = [
       currentDay,
       ...weatherData.list
-         .filter((item) => getLocalAfternoon(item.dt, weatherData.timezone))
+         .filter((item) => getLocalAfternoon(item.dt, tz))
          .map((item) => ({
             condition: item.weather[0].main,
             temp: {
