@@ -25,7 +25,11 @@ export default function Home({ weatherData }) {
    );
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps({ req }) {
+   /* Trying to get initial location */
+   const forwarded = req.headers["x-forwarded-for"]
+   const ip = forwarded ? forwarded.split(/, /)[0] : req.connection.remoteAddress
+   console.log(ip);
    const response = await fetch("http://localhost:3000/api/get_weather");
    const data = await response.json();
    return {
