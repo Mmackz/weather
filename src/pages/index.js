@@ -29,7 +29,7 @@ export async function getServerSideProps({ req }) {
    /* Trying to get initial location */
    const forwarded = req.headers["x-forwarded-for"]
    const ip = forwarded ? forwarded.split(/, /)[0] : req.connection.remoteAddress
-   console.log(ip);
+   
 
    const URL = process.env.NODE_ENV === "production" ? process.env.NEXT_PUBLIC_URL : "http://localhost:3000";
    const response = await fetch(`${URL}/api/get_weather`);
@@ -39,4 +39,9 @@ export async function getServerSideProps({ req }) {
          weatherData: data
       }
    };
+}
+
+async function getLocation(ip) {
+   const data = await fetch(`https://iapi.co/${ip}/json`).then((res) => res.json());
+   console.log(data);
 }
