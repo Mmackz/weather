@@ -1,7 +1,7 @@
 .container {
    padding: 0 0.5rem 1rem;
    width: fit-content;
-   border-radius: 1rem;
+   border-radius: var(--border-radius);
    text-align: center;
    background: white;
    color: var(--dark-text);
