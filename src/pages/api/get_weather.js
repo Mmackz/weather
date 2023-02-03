@@ -28,7 +28,7 @@ function buildObject(data) {
 
    const airQuality = {
       index: airQualityData.main.aqi,
-      components: airQualityData.components
+      components: filterComponents(airQualityData.components)
    };
 
    const currentWeather = {
@@ -72,10 +72,28 @@ function buildObject(data) {
 
    return {
       airQuality,
-      coord: weatherData.coord,
+      coord: {
+         ...weatherData.coord,
+         city: weatherData.name,
+         country: weatherData.sys.country
+      },
       current: currentWeather,
       forecast: days
    };
+}
+
+function filterComponents(components) {
+   const obj = {};
+   Object.keys(components).forEach((key) => {
+      if (key === "co") {
+         obj[key] = +(components[key] / 1000).toFixed(1);
+      } else if (key === "pm2_5") {
+         obj.pm2 = +(components[key] / 10).toFixed(1);
+      } else if (key !== "no" && key !== "nh3") {
+         obj[key] = +(components[key] / 10).toFixed(1);
+      }
+   });
+   return obj;
 }
 
 async function getAirQualityData(coords) {
