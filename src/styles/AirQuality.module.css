@@ -1,0 +1,104 @@
+.container {
+   margin-top: 1rem;
+   padding: 1rem;
+   background: white;
+   border-radius: var(--border-radius);
+   width: fit-content;
+}
+
+.titlebar {
+   display: flex;
+   align-items: flex-start;
+   justify-content: space-between;
+}
+
+.title {
+   color: var(--dark-text);
+   font-weight: 500;
+   font-size: 0.95rem;
+   margin-bottom: 0.75rem;
+}
+
+.locationContainer {
+   display: flex;
+   align-items: center;
+   font-size: 0.8rem;
+   color: #bbc1d7;
+   width: fit-content;
+}
+
+.locationContainer > p {
+   margin-top: 0.15rem;
+}
+
+.readingContainer {
+   display: flex;
+   justify-content: space-between;
+}
+
+.reading {
+   display: flex;
+}
+
+/* Wind icon */
+.reading > svg:first-child {
+   margin-right: 0.25rem;
+}
+
+.textContainer > p:first-child {
+   font-weight: bold;
+}
+
+.textContainer > p:last-child {
+   font-size: 0.8rem;
+   color: #bbc1d7;
+}
+
+.button {
+   border: none;
+   border-radius: 8px;
+   color: #5c92fe;
+   font-size: 0.8rem;
+   font-weight: 500;
+   padding: 0.4rem 0.6rem;
+   background-color: #5c92fe20;
+   align-self: center;
+   cursor: pointer;
+}
+
+.components {
+   display: flex;
+   gap: 0.25rem;
+}
+
+.component {
+   position: relative;
+   width: 3rem;
+   margin-top: 0.75rem;
+   padding: 0.5rem 0;
+   border-radius: 8px;
+   text-align: center;
+}
+
+.component > p:first-of-type {
+   font-weight: bold;
+}
+
+.component > p:last-of-type {
+   font-size: 0.8rem;
+   font-weight: 500;
+}
+
+.component sub {
+   font-size: 0.5rem;
+}
+
+.bg {
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   left: 0;
+   top: 0;
+   opacity: 0.09;
+   border-radius: inherit;
+}

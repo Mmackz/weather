@@ -2,7 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "@/styles/Home.module.css";
 import { Ubuntu } from "@next/font/google";
-import { DateInfo, Forecast } from "@/components";
+import { AirQuality, DateInfo, Forecast } from "@/components";
 
 const font = Ubuntu({
    subsets: ["latin"],
@@ -20,6 +20,7 @@ export default function Home({ weatherData }) {
          <main className={font.className}>
             <DateInfo />
             <Forecast forecast={weatherData.forecast} />
+            <AirQuality data={weatherData.airQuality} location={weatherData.coord} />
          </main>
       </>
    );
