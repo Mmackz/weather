@@ -5,7 +5,7 @@ function Day({ data, index }) {
    
    // used in Image src attribute to display dynamic icon based on time of day
    const hour = new Date().getHours();
-   const timeOfDay = hour > 19 || hour < 7 ? "night" : "day";
+   const timeOfDay = hour > 18 || hour < 7 ? "night" : "day";
 
    return (
       <div className={styles.container}>
