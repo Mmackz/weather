@@ -2,7 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "@/styles/Home.module.css";
 import { Ubuntu } from "@next/font/google";
-import { AirQuality, DateInfo, Forecast } from "@/components";
+import { AirQuality, DateInfo, Forecast, Sunrise } from "@/components";
 
 const font = Ubuntu({
    subsets: ["latin"],
@@ -10,6 +10,7 @@ const font = Ubuntu({
 });
 
 export default function Home({ weatherData }) {
+   const { airQuality, coord, current, forecast } = weatherData;
    return (
       <>
          <Head>
@@ -19,12 +20,15 @@ export default function Home({ weatherData }) {
          </Head>
          <main className={font.className}>
             <DateInfo />
-            <Forecast forecast={weatherData.forecast} />
-            <AirQuality data={weatherData.airQuality} location={weatherData.coord} />
+            <Forecast forecast={forecast} />
+            <AirQuality data={airQuality} location={coord} />
+            <Sunrise location={coord} time={current.time} />
          </main>
       </>
    );
 }
+
+// Need Icon for Mist! //
 
 export async function getServerSideProps({ req }) {
    const isProd = process.env.NODE_ENV === "production";

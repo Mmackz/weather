@@ -25,6 +25,7 @@ export default async function handler(req, res) {
 
 function buildObject(data) {
    const [weatherData, airQualityData] = data;
+   const tz = weatherData.timezone;
 
    const airQuality = {
       index: airQualityData.main.aqi,
@@ -34,8 +35,10 @@ function buildObject(data) {
    const currentWeather = {
       condition: weatherData.weather[0].main,
       humidity: weatherData.main.humidity,
-      sunrise: weatherData.sys.sunrise,
-      sunset: weatherData.sys.sunset,
+      time: {
+         sunrise: convertTimestampToAM_PM(weatherData.sys.sunrise, tz),
+         sunset: convertTimestampToAM_PM(weatherData.sys.sunset, tz)
+      },
       temp: {
          metric: Math.round(weatherData.main.temp - 273.15),
          imperial: Math.round((weatherData.main.temp - 273.15) * 1.8 + 32)
@@ -52,8 +55,6 @@ function buildObject(data) {
       weekday: 7,
       weekday_text: "Now"
    };
-
-   const tz = weatherData.timezone;
 
    const days = [
       currentDay,
@@ -80,6 +81,17 @@ function buildObject(data) {
       current: currentWeather,
       forecast: days
    };
+}
+
+function convertTimestampToAM_PM(dt, tz) {
+   const localTimestamp = (dt + tz) * 1000;
+   const date = new Date(localTimestamp);
+   return date.toLocaleTimeString("en-US", {
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true,
+      timeZone: "UTC"
+   });
 }
 
 function filterComponents(components) {
