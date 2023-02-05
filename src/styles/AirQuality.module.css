@@ -57,7 +57,7 @@
 .button {
    border: none;
    border-radius: 8px;
-   color: #5c92fe;
+   color: var(--accent-text);
    font-size: 0.8rem;
    font-weight: 500;
    padding: 0.4rem 0.6rem;
