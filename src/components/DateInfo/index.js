@@ -1,6 +1,6 @@
 import { useDate } from "@/hooks";
 import styles from "@/styles/DateInfo.module.css";
-import Sun from "@/../public/images/sun";
+import Sun from "@/../public/images/icons/sun";
 
 export function DateInfo() {
    const date = useDate();

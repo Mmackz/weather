@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import styles from "@/styles/AirQuality.module.css";
-import Location from "@/../public/images/location";
-import Wind from "@/../public/images/wind";
+import Location from "public/images/icons/location";
+import Wind from "@/../public/images/icons/wind";
 
 export function AirQuality(props) {
    const [data, setData] = useState(props.data);
