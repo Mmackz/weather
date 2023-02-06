@@ -1,0 +1,117 @@
+.container {
+   margin-top: 2rem;
+   position: relative;
+   padding: 12rem 0;
+   max-width: 16rem;
+   overflow: hidden;
+   border-radius: var(--border-radius);
+   background: var(--day-bg);
+   background: linear-gradient(var(--day-gradient));
+   background: -moz-linear-gradient(var(--day-gradient));
+   background: -webkit-linear-gradient(var(--day-gradient));
+}
+
+.sun {
+   position: absolute;
+   width: 9rem;
+   height: 9rem;
+   background-color: rgba(255, 255, 127, 0.187);
+   border-radius: 50%;
+   top: -2.5rem;
+   right: -2.5rem;
+}
+
+.sun::after {
+   content: "";
+   position: absolute;
+   width: 7rem;
+   height: 7rem;
+   background-color: rgba(255, 255, 166, 0.2);
+   border-radius: 50%;
+   top: 1rem;
+   right: 1rem;
+}
+
+.sun::before {
+   content: "";
+   position: absolute;
+   width: 5rem;
+   height: 5rem;
+   background-color: rgba(254, 254, 92, 0.936);
+   border-radius: 50%;
+   top: 2rem;
+   right: 2rem;
+   z-index: 2;
+}
+
+.dot {
+   display: block;
+   width: 0.75rem;
+   height: 0.75rem;
+   border-radius: 50%;
+   background: black
+}
+
+.dot:first-of-type {
+   position: absolute;
+   background: rgb(152, 180, 252);
+   box-shadow: inset -2px -2px 8px rgb(92, 149, 224);
+   top: 5rem;
+   left: 3rem;
+}
+
+.dot:first-of-type::after {
+   content: "";
+   position: absolute;
+   background: rgb(161, 186, 247);
+   box-shadow: inset -2px -2px 8px rgb(92, 149, 224);
+   width: 0.5rem;
+   height: 0.5rem;
+   border-radius: 50%;
+   top: 6rem;
+   left: 11rem;
+}
+
+.dot:first-of-type::before {
+   content: "";
+   position: absolute;
+   background: rgb(192, 208, 248);
+   box-shadow: inset -2px -2px 8px rgb(92, 149, 224);
+   width: 0.45rem;
+   height: 0.45rem;
+   border-radius: 50%;
+   top: 10rem;
+   right: 2rem;
+}
+
+.dot:last-of-type {
+   position: absolute;
+   background: rgb(92, 149, 224);
+   box-shadow: inset -2px -2px 8px rgb(151, 177, 241);
+   bottom: 5rem;
+   right: 3rem;
+}
+
+.dot:last-of-type::after {
+   content: "";
+   position: absolute;
+   background: rgb(161, 186, 247);
+   box-shadow: inset -2px -2px 8px rgb(92, 149, 224);
+   width: 0.5rem;
+   height: 0.5rem;
+   border-radius: 50%;
+   top: 3rem;
+   right: 9rem;
+}
+
+.dot:last-of-type::before {
+   content: "";
+   position: absolute;
+   background: rgb(192, 208, 248);
+   box-shadow: inset -2px -2px 8px rgb(92, 149, 224);
+   width: 0.45rem;
+   height: 0.45rem;
+   border-radius: 50%;
+   bottom: 4rem;
+   right: 1rem;
+}
