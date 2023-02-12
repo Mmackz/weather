@@ -23,13 +23,13 @@ export function AirQuality(props) {
          <div className={styles.titlebar}>
             <h3 className={styles.title}>Air Quality Index</h3>
             <div className={styles.locationContainer}>
-               <Location />
+               <Location color={"#5c92fe"} size={21} />
                <p onClick={refreshData}>{location.city}</p>
             </div>
          </div>
          <div className={styles.readingContainer}>
             <div className={styles.reading}>
-               <Wind color={color} />
+               <Wind color={color} size={48} />
                <div className={styles.textContainer}>
                   <p style={{ color }}>{text}</p>
                   <p>{quote}</p>

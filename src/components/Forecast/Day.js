@@ -1,11 +1,10 @@
 import Image from "next/image";
 import styles from "@/styles/Day.module.css";
+import { getTimeOfDay } from "@/helpers/getTimeOfDay";
 
-function Day({ data, index }) {
-   
-   // used in Image src attribute to display dynamic icon based on time of day
-   const hour = new Date().getHours();
-   const timeOfDay = hour > 18 || hour < 7 ? "night" : "day";
+function Day({ data, index, tz }) {
+
+   const timeOfDay = getTimeOfDay(tz);
 
    return (
       <div className={styles.container}>

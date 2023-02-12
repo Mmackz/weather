@@ -11,7 +11,7 @@ export function Sunrise(props) {
          <h3 className={styles.title}>Sunrise & Sunset</h3>
          <div className={styles.dataContainer}>
             <div className={styles.location}>
-               <Location />
+               <Location color={"#5c92fe"} size={21} />
                <p>{location.city}</p>
             </div>
             <div className={styles.data}>

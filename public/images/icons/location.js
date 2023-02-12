@@ -1,8 +1,8 @@
 const SvgComponent = (props) => (
    <svg
-      width={21}
-      height={21}
-      fill="#5c92fe"
+      width={props.size}
+      height={props.size}
+      fill={props.color}
       version="1.1"
       viewBox="100 25 500 500"
       xmlns="http://www.w3.org/2000/svg"
