@@ -15,9 +15,10 @@ export const useDate = () => {
    }, []);
 
    const day = today?.toLocaleDateString(locale, { weekday: "long" });
-   const date = `${day}, ${today?.getDate()} ${today?.toLocaleDateString(locale, {
+   const now = `${today?.getDate()} ${today?.toLocaleDateString(locale, {
       month: "long"
-   })}, ${today?.getFullYear()}\n\n`;
+   })}`
+   const date = `${day}, ${now}, ${today?.getFullYear()}\n\n`;
 
    const hour = today?.getHours();
    const greeting = `Good ${
@@ -32,6 +33,7 @@ export const useDate = () => {
 
    return {
       date,
+      now,
       time,
       greeting
    };

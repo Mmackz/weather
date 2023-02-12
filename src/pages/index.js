@@ -20,10 +20,10 @@ export default function Home({ weatherData }) {
          </Head>
          <main className={font.className}>
             <DateInfo />
-            <Forecast forecast={forecast} />
+            <Forecast forecast={forecast} tz={current.time.timezone} />
             <AirQuality data={airQuality} location={coord} />
             <Sunrise location={coord} time={current.time} />
-            <Current data={current}/>
+            <Current data={current} location={coord} tz={current.time.timezone} />
          </main>
       </>
    );

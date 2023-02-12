@@ -37,7 +37,8 @@ function buildObject(data) {
       humidity: weatherData.main.humidity,
       time: {
          sunrise: convertTimestampToAM_PM(weatherData.sys.sunrise, tz),
-         sunset: convertTimestampToAM_PM(weatherData.sys.sunset, tz)
+         sunset: convertTimestampToAM_PM(weatherData.sys.sunset, tz),
+         timezone: tz
       },
       temp: {
          metric: Math.round(weatherData.main.temp - 273.15),
